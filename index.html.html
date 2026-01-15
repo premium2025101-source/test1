@@ -1,668 +1,0 @@
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--emerald-dark);
-            color: var(--gold-light);
-            padding: 1rem 2rem;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-xl);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 600;
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        .toast i {
-            color: #25D366;
-            font-size: 1.25rem;
-        }
-
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--cream-dark);
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--emerald-medium), var(--emerald-dark));
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--emerald-dark);
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .hero {
-                min-height: 60vh;
-                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
-            }
-            
-            .hero-stats {
-                gap: 1.5rem;
-            }
-            
-            .stat-number {
-                font-size: 2rem;
-            }
-            
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cart-panel {
-                position: relative;
-                top: 0;
-            }
-            
-            .order-section {
-                padding: 3rem 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .card-footer {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .btn-add {
-                width: 100%;
-            }
-            
-            .form-panel {
-                padding: 1.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Background Pattern -->
-    <div class="bg-pattern"></div>
-
-    <!-- Header Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-star"></i>
-                <span>أشهى المطبخ الشرقي الأصيل</span>
-            </div>
-            <h1>المطبخ <span>الشامي</span></h1>
-            <p class="hero-subtitle">Al-Shami Kitchen</p>
-            <p class="hero-description">
-                نقدم لكم أشهى المأكولات الشرقية الأصيلة بطرق تقليدية ومهنية، 
-                لأن качество هو التزامنا ورضاكم هو هدفنا
-            </p>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">+50</div>
-                    <div class="stat-label">وصفة أصيلة</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">طازج يومياً</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5.0</div>
-                    <div class="stat-label">تقييم العملاء</div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Menu Section -->
-    <section class="menu-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">
-                    <i class="fas fa-utensils"></i>
-                    <span>قائمة الطعام</span>
-                </div>
-                <h2 class="section-title">اختر أطباقك المفضلة</h2>
-                <p class="section-subtitle">
-                    تشكيلة واسعة من أشهى المأكولات الشرقية التقليدية المحضرة بأجود المكونات
-                </p>
-            </div>
-
-            <div class="menu-grid">
-                <!-- Item 1 -->
-                <div class="food-card animate__animated" style="animation-delay: 0.1s;">
-                    <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" 
-                             alt="ورق عنب باللحم" class="card-image">
-                        <div class="card-overlay"></div>
-                        <span class="card-badge">ممتاز</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">ورق عنب باللحم</h3>
-                        <p class="card-description">أوراق عنب طازجة محشوة باللحم المتبل والتوابل الشامية التقليدية</p>
-                        <div class="card-footer">
-                            <span class="card-price"><span>$</span>14.00</span>
-                            <button class="btn-add" onclick="addToCart('ورق عنب باللحم', 14)">
-                                <i class="fas fa-plus"></i>
-                                إضافة للطلب
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="food-card animate__animated" style="animation-delay: 0.2s;">
-                    <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80" 
-                             alt="كبة مشوية" class="card-image">
-                        <div class="card-overlay"></div>
-                        <span class="card-badge">مباع كثير</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">كبة مشوية</h3>
-                        <p class="card-description">كبة برغل تقليدية مشوية على الفحم مع صلصة طحينة لذيذة</p>
-                        <div class="card-footer">
-                            <span class="card-price"><span>$</span>18.00</span>
-                            <button class="btn-add" onclick="addToCart('كبة مشوية', 18)">
-                                <i class="fas fa-plus"></i>
-                                إضافة للطلب
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="food-card animate__animated" style="animation-delay: 0.3s;">
-                    <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1541014741259-de52941196e0?auto=format&fit=crop&w=600&q=80" 
-                             alt="شيش براك" class="card-image">
-                        <div class="card-overlay"></div>
-                        <span class="card-badge">جديد</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">شيش براك</h3>
-                        <p class="card-description">معكرونة محشوة باللحم في صلصة لبن طحينة شهية</p>
-                        <div class="card-footer">
-                            <span class="card-price"><span>$</span>16.00</span>
-                            <button class="btn-add" onclick="addToCart('شيش براك', 16)">
-                                <i class="fas fa-plus"></i>
-                                إضافة للطلب
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="food-card animate__animated" style="animation-delay: 0.4s;">
-                    <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80" 
-                             alt="عش البلبل" class="card-image">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">عش البلبل</h3>
-                        <p class="card-description">فطائر نابولية مقرمشة من الداخل طرية من الخارج</p>
-                        <div class="card-footer">
-                            <span class="card-price"><span>$</span>12.00</span>
-                            <button class="btn-add" onclick="addToCart('عش البلبل', 12)">
-                                <i class="fas fa-plus"></i>
-                                إضافة للطلب
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="food-card animate__animated" style="animation-delay: 0.5s;">
-                    <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=600&q=80" 
-                             alt="منسف أردني" class="card-image">
-                        <div class="card-overlay"></div>
-                        <span class="card-badge">ممتاز</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">منسف أردني</h3>
-                        <p class="card-description">أرز بسمتي مع لحم الغنم وصلصة لبن حسب الوصفة الأردنية الأصلية</p>
-                        <div class="card-footer">
-                            <span class="card-price"><span>$</span>28.00</span>
-                            <button class="btn-add" onclick="addToCart('منسف أردني', 28)">
-                                <i class="fas fa-plus"></i>
-                                إضافة للطلب
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="food-card animate__animated" style="animation-delay: 0.6s;">
-                    <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1514516345957-556ca7d90a29?auto=format&fit=crop&w=600&q=80" 
-                             alt="مندي لحم" class="card-image">
-                        <div class="card-overlay"></div>
-                        <span class="card-badge">مباع كثير</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">مندي لحم</h3>
-                        <p class="card-description">أرز بسمتي مطهو مع لحم الغنم المدخن والتوابل العربية الأصيلة</p>
-                        <div class="card-footer">
-                            <span class="card-price"><span>$</span>32.00</span>
-                            <button class="btn-add" onclick="addToCart('مندي لحم', 32)">
-                                <i class="fas fa-plus"></i>
-                                إضافة للطلب
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 7 -->
-                <div class="food-card animate__animated" style="animation-delay: 0.7s;">
-                    <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80" 
-                             alt="مندي دجاج" class="card-image">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">مندي دجاج</h3>
-                        <p class="card-description">أرز مع دجاج مشوي بالفرن مع صلصة طماطم خاصة وتوابل شرقية</p>
-                        <div class="card-footer">
-                            <span class="card-price"><span>$</span>24.00</span>
-                            <button class="btn-add" onclick="addToCart('مندي دجاج', 24)">
-                                <i class="fas fa-plus"></i>
-                                إضافة للطلب
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 8 -->
-                <div class="food-card animate__animated" style="animation-delay: 0.8s;">
-                    <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" 
-                             alt="فريكة مع موزات" class="card-image">
-                        <div class="card-overlay"></div>
-                        <span class="card-badge">فاخر</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">فريكة مع موزات</h3>
-                        <p class="card-description">فريكة مطهوة مع موزات لحم الغنم المتبلة بالبهارات العربية</p>
-                        <div class="card-footer">
-                            <span class="card-price"><span>$</span>35.00</span>
-                            <button class="btn-add" onclick="addToCart('فريكة مع موزات', 35)">
-                                <i class="fas fa-plus"></i>
-                                إضافة للطلب
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Order Section -->
-    <section class="order-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>اطلب الآن</span>
-                </div>
-                <h2 class="section-title">استكمل طلبك</h2>
-                <p class="section-subtitle">
-                   املأ البيانات التالية وسيتم تأكيد طلبك عبر واتساب
-                </p>
-            </div>
-
-            <div class="order-grid">
-                <!-- Cart Panel -->
-                <div class="cart-panel animate__animated animate__fadeInRight">
-                    <div class="cart-header">
-                        <div class="cart-icon">
-                            <i class="fas fa-shopping-basket"></i>
-                        </div>
-                        <div>
-                            <h3 class="cart-title">سلة المشتريات</h3>
-                        </div>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </div>
-
-                    <ul class="cart-items" id="cartItems">
-                        <li class="cart-empty">
-                            <i class="fas fa-shopping-basket"></i>
-                            <p>السلة فارغة</p>
-                            <span>أضف أطباقك المفضلة من القائمة أعلاه</span>
-                        </li>
-                    </ul>
-
-                    <div class="cart-totals" id="cartTotals" style="display: none;">
-                        <div class="total-row subtotal">
-                            <span>المجموع الفرعي:</span>
-                            <span id="subtotal">$0.00</span>
-                        </div>
-                        <div class="total-row tax">
-                            <span>الضريبة (13%):</span>
-                            <span id="tax">$0.00</span>
-                        </div>
-                        <div class="total-row grand">
-                            <span>المجموع الكلي:</span>
-                            <span id="total">$0.00</span>
-                        </div>
-                    </div>
-
-                    <div class="deposit-box" id="depositBox" style="display: none;">
-                        <div class="deposit-label">💰 العربون المطلوب للتأكيد (50%)</div>
-                        <div class="deposit-amount" id="deposit">$0.00</div>
-                    </div>
-                </div>
-
-                <!-- Form Panel -->
-                <div class="form-panel animate__animated animate__fadeInLeft">
-                    <div class="form-header">
-                        <h3 class="form-title">بيانات الطلب</h3>
-                        <p class="form-subtitle">يرجى تعبئة البيانات التالية لإتمام الطلب</p>
-                    </div>
-
-                    <form id="orderForm" onsubmit="submitOrder(event)">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label class="form-label">
-                                    <i class="fas fa-user"></i>
-                                    الاسم الكامل
-                                </label>
-                                <input type="text" id="custName" class="form-input" 
-                                       placeholder="أدخل اسمك الكامل" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label">
-                                    <i class="fas fa-phone"></i>
-                                    رقم الهاتف
-                                </label>
-                                <input type="tel" id="custPhone" class="form-input" 
-                                       placeholder="أدخل رقم هاتفك" required>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">
-                                        <i class="fas fa-calendar"></i>
-                                        تاريخ الاستلام
-                                    </label>
-                                    <input type="date" id="pickupDate" class="form-input" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-label">
-                                        <i class="fas fa-clock"></i>
-                                        وقت الاستلام
-                                    </label>
-                                    <select id="pickupTime" class="form-select" required>
-                                        <option value="">اختر الوقت</option>
-                                        <option value="12:00 مساءً">12:00 مساءً</option>
-                                        <option value="01:00 مساءً">01:00 مساءً</option>
-                                        <option value="02:00 مساءً">02:00 مساءً</option>
-                                        <option value="05:00 مساءً">05:00 مساءً</option>
-                                        <option value="06:00 مساءً">06:00 مساءً</option>
-                                        <option value="07:00 مساءً">07:00 مساءً</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label">
-                                    <i class="fas fa-comment-alt"></i>
-                                    ملاحظات خاصة
-                                </label>
-                                <textarea id="custNotes" class="form-textarea" 
-                                          placeholder="مثلاً: أقل ملحاً، مكسرات إضافية، بدون بصل..."></textarea>
-                            </div>
-
-                            <div class="payment-info">
-                                <div class="payment-header">
-                                    <i class="fas fa-credit-card"></i>
-                                    <span>معلومات الدفع</span>
-                                </div>
-                                <p style="margin-bottom: 1rem; color: var(--text-medium); font-size: 0.95rem;">
-                                    يرجى إرسال العربون (50%) عبر خدمة Interac e-Transfer إلى:
-                                </p>
-                                <div class="payment-email">a.elkashishy@gmail.com</div>
-                            </div>
-
-                            <button type="submit" class="btn-submit">
-                                <i class="fab fa-whatsapp"></i>
-                                تأكيد الطلب وإرسال عبر واتساب
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Toast Container -->
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMessage">تم إضافة الصنف للسلة</span>
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-        // ============================================
-        // STATE MANAGEMENT
-        // ============================================
-        let cart = [];
-        const TAX_RATE = 0.13;
-        const PHONE_NUMBER = '14387639904';
-
-        // ============================================
-        // INITIALIZATION
-        // ============================================
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set minimum date to tomorrow
-            const dateInput = document.getElementById('pickupDate');
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            dateInput.min = tomorrow.toISOString().split('T')[0];
-            dateInput.value = tomorrow.toISOString().split('T')[0];
-
-            // Initialize animations for food cards
-            initAnimations();
-        });
-
-        function initAnimations() {
-            const cards = document.querySelectorAll('.food-card');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.classList.add('animate__fadeInUp');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            cards.forEach(card => {
-                observer.observe(card);
-            });
-        }
-
-        // ============================================
-        // CART FUNCTIONS
-        // ============================================
-        function addToCart(name, price) {
-            // Check if item already exists
-            const existingItem = cart.find(item => item.name === name);
-            
-            if (existingItem) {
-                existingItem.qty++;
-            } else {
-                cart.push({ name, price, qty: 1 });
-            }
-            
-            updateCartUI();
-            showToast('تم إضافة ' + name + ' للسلة');
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateQuantity(index, change) {
-            cart[index].qty += change;
-            
-            if (cart[index].qty <= 0) {
-                removeFromCart(index);
-            } else {
-                updateCartUI();
-            }
-        }
-
-        function updateCartUI() {
-            const cartItems = document.getElementById('cartItems');
-            const cartCount = document.getElementById('cartCount');
-            const cartTotals = document.getElementById('cartTotals');
-            const depositBox = document.getElementById('depositBox');
-            
-            // Calculate totals
-            let subtotal = 0;
-            let totalItems = 0;
-            
-            cart.forEach(item => {
-                subtotal += item.price * item.qty;
-                totalItems += item.qty;
-            });
-            
-            const tax = subtotal * TAX_RATE;
-            const total = subtotal + tax;
-            const deposit = total * 0.5;
-            
-            // Update cart count
-            cartCount.textContent = totalItems;
-            
-            // Update totals display
-            document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
-            document.getElementById('tax').textContent = '$' + tax.toFixed(2);
-            document.getElementById('total').textContent = '$' + total.toFixed(2);
-            document.getElementById('deposit').textContent = '$' + deposit.toFixed(2);
-            
-            // Show/hide totals and deposit
-            if (cart.length > 0) {
-                cartTotals.style.display = 'block';
-                depositBox.style.display = 'block';
-            } else {
-                cartTotals.style.display = 'none';
-                depositBox.style.display = 'none';
-            }
-            
-            // Render cart items
-            if (cart.length === 0) {
-                cartItems.innerHTML = `
-                    <li class="cart-empty">
-                        <i class="fas fa-shopping-basket"></i>
-                        <p>السلة فارغة</p>
-                        <span>أضف أطباقك المفضلة من القائمة أعلاه</span>
-                    </li>
-                `;
-            } else {
-                cartItems.innerHTML = cart.map((item, index) => `
-                    <li class="cart-item">
-                        <div class="item-info">
-                            <div class="item-name">${item.name}</div>
-                            <div class="item-price">$${(item.price * item.qty).toFixed(2)}</div>
-                        </div>
-                        <div class="item-controls">
-                            <button class="qty-btn" onclick="updateQuantity(${index}, -1)">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <span class="qty-value">${item.qty}</span>
-                            <button class="qty-btn" onclick="updateQuantity(${index}, 1)">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <button class="btn-remove" onclick="removeFromCart(${index})">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </li>
-                `).join('');
-            }
-        }
-
-        // ============================================
-        // TOAST NOTIFICATION
-        // ============================================
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastMessage = document.getElementById('toastMessage');
-            
-            toastMessage.textContent = message;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        // ============================================
-        // FORM SUBMISSION
-        // ============================================
-        function submitOrder(event) {
-            event.preventDefault();
-            
-            // Validate cart
-            if (cart.length === 0) {
-                showToast('يرجى إضافة أصناف للسلة أولاً');
-                return;
-            }
-            
-            // Get form data
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            const date = document.getElementById('pickupDate').value;
-            const time = document.getElementById('pickupTime').value;
-            const notes = document.getElementById('custNotes').value;
-            
-            // Calculate totals
-            let subtotal = 0;
-            cart.forEach(item => subtotal += item.price * item.qty);
-            
-            const tax = subtotal * TAX_RATE;
-            const total = subtotal + tax;
-            const deposit = total * 0.5;
-            
-            // Build message
-            let message = '🛒 *طلب جديد من المطبخ الشامي*%0A%0A';
-            message += '━━━━━━━━━━━━━━━━━━━━%0A';
-            message += '*📋 تفاصيل الطلب:*%0A';
-            message += '━━━━━━━━━━━━━━━━━━━━%0A';
-            
-            cart.forEach(item => {
-                message += `• ${item.name} × ${item.qty} = $${(item.price * item.qty).toFixed(2)}%0A`;
-            });
-            
-            message += '%0A━━━━━━━━━━━━━━━━━━━━%0A';
-            message += `*💵 المجموع الفرعي:* $${subtotal.toFixed(2)}%0A`;
-            message += `*📊 الضريبة (13%):* $${tax.toFixed(2)}%0A`;
-            message += `*💰 المجموع الكلي:* $${total.toFixed(2)}%0A`;
-            message += '%0A';
-            message += '━━━━━━━━━━━━━━━━━━━━%0A';
-            message += `*💳 العربون المطلوب (50%):* $${deposit.toFixed(2)}%0A`;
-            message += '%0A';
-            message += '━━━━━━━━━━━━━━━━━━━━%0A';
-            message += '*👤 بيانات العميل:*%0A';
-            message += `
